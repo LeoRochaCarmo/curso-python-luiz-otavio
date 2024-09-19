@@ -18,6 +18,7 @@ while True:
         os.system('cls')
         valor = input('Valor: ')
         lista.append(valor)
+        
     elif opcao == 'a':
         os.system('cls')
         indice_str = input('Escolha o índice para apagar: ')
