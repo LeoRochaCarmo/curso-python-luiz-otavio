@@ -101,11 +101,11 @@ def encontra_primeiro_duplicado(lista_de_inteiros):
             if numero in numeros_checados:
                 primeiro_duplicado = numero
                 break
-            else:
-                numeros_checados.add(numero)
+            
+            numeros_checados.add(numero)
                 
         respostas.append(primeiro_duplicado)
 
     return respostas
 
-print(encontra_primeiro_duplicado(lista_de_listas_de_inteiros))
+encontra_primeiro_duplicado(lista_de_listas_de_inteiros)
