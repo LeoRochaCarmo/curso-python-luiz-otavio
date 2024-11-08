@@ -65,13 +65,12 @@ for n in gen:
 def generator_2(n=0, maximum=10):
     while True:
         yield n
-
-        if n > maximum:
-            return
-        
         n += 1
 
-gen = generator_2()
+        if n >= maximum:
+            return
+        
+gen = generator_2(n=5, maximum=8)
 
 for n in gen:
     print(n)
