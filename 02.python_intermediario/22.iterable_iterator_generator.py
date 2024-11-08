@@ -44,3 +44,36 @@ Ela é usada para criar iteradores de forma mais conveniente e em uma única lin
 Já um iterator é uma interface mais ampla, que pode ser implementada por vários tipos de objetos para permitir a iteração.
 '''
 #%%
+# Introdução às Generator Functions
+
+def generator(n=0):
+    yield 1 # Pausa 
+    print('Continuando...')
+    yield 2 # Pausa 
+    print('Mais uma...')
+    yield 3 # Pausa 
+    print('Vou terminar...')
+    return 'ACABOU' 
+
+gen = generator(n=0)
+
+for n in gen:
+    print(n)
+
+#%% 
+
+def generator_2(n=0, maximum=10):
+    while True:
+        yield n
+
+        if n > maximum:
+            return
+        
+        n += 1
+
+gen = generator_2()
+
+for n in gen:
+    print(n)
+
+
