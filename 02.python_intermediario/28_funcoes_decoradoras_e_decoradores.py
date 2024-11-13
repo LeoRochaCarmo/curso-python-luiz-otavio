@@ -73,3 +73,83 @@ def minha_funcao():
     print("Função original em execução")
 
 minha_funcao()
+
+#%%
+# Exemplo: Em quanto tempo a função executou
+
+import time
+
+def tictoc(func):
+    def wrapper():
+        t1 = time.time()
+        func()
+        t2 = time.time() - t1
+        result = f'{func.__name__} ran in ' \
+                 f'{t2} seconds'
+        return result
+    return wrapper
+
+@tictoc
+def do_this():
+    time.sleep(1.5)
+
+@tictoc
+def do_that():
+    time.sleep(.5)
+
+print(do_this())
+print(do_that())
+
+#%%
+# Decoradores com parâmetros
+
+def decorators_factory(a=None, b=None, c=None):
+
+    def func_factory(func):
+        print('Decorator 1')
+
+        def wrapper(*args, **kargs):
+            print('Decorator parameters:', a, b, c)
+            print('Wrapper')
+            result = func(*args, **kargs)
+            return result
+        return wrapper
+    return func_factory
+
+
+@decorators_factory(1, 2, 3)
+def sum(x,y):
+    return x + y
+
+multiplication = decorators_factory()(lambda x, y: x * y)
+
+ten_plus_five = sum(10, 5)
+ten_times_five = multiplication(10, 5)
+
+print(ten_plus_five)
+print(ten_times_five)
+
+#%%
+# Ordem dos decoradores
+def decorators_param(name):
+
+    def decorator(func):
+        print('Decorator:', name)
+
+        def new_func(*args, **kargs):
+            result = func(*args, **kargs)
+            final = f'{result} {name}'
+            return final
+        return new_func
+    return decorator
+
+
+@decorators_param(name='3')
+@decorators_param(name='2')
+@decorators_param(name='1')
+def sum(x,y):
+    return x + y
+
+ten_plus_five = sum(10, 5)
+
+print(ten_plus_five)
