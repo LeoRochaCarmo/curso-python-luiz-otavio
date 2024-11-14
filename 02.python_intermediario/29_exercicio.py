@@ -14,10 +14,20 @@ list_1 = ['Salvador', 'Ubatuba', 'Belo Horizonte']
 list_2 = ['BA', 'SP', 'MG', 'RJ']
 
 def zipper(list_1, list_2):
-    max_range = min(len(list_1), len(list_2))
+    max_range = (min(len(list_1), len(list_2)))
     return [
         (list_1[i], list_2[i])
         for i in range(max_range)
     ]
 
-print(*zipper(list_1, list_2),sep='\n')
+print(*zipper(list_1, list_2), sep='\n')
+
+#%%
+# Solução mais simples (zip)
+print(*list(zip(list_1, list_2)), sep='\n')
+
+#%%
+# Usando zip_longest -> usa a lista maior
+
+from itertools import zip_longest
+print(*list(zip_longest(list_1, list_2, fillvalue= 'SEM CIDADE')), sep='\n')
