@@ -71,5 +71,14 @@ with open(caminho_arquivo, 'a+', encoding='utf-8') as arquivo:
         ('\nAPPEND\n', 'Atenção\n' 'Linha 5\n', 'Linha 6\n')
     )
 
+#%%
+# APAGAR ARQUIVO COM OS
+import os
 
+# os.remove(caminho_arquivo) # remove o arquivo
+# os.unlink(caminho_arquivo) # remove o arquivo
 
+#%%
+# TROCAR NOME OU MOVER ARQUIVO
+
+# os.rename(caminho_arquivo, 'arquivo_renomeado.txt')
