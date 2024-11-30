@@ -1,0 +1,6 @@
+Error:qualquer coisa (LogFileMixin)
+Success:qualquer coisa (LogFileMixin)
+Error:qualquer coisa (LogFileMixin)
+Success:qualquer coisa (LogFileMixin)
+Error:qualquer coisa (LogFileMixin)
+Success:qualquer coisa (LogFileMixin)
