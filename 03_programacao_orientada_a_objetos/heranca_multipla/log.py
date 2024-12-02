@@ -9,10 +9,10 @@ class Log:
         raise NotImplementedError('Implemente o método log')
     
     def log_error(self, msg):
-        return self._log(f'Error:{msg}')
+        return self._log(f'Error: {msg}')
     
     def log_success(self, msg):
-        return self._log(f'Success:{msg}')
+        return self._log(f'Success: {msg}')
     
 class LogFileMixin(Log):
     def _log(self,msg):
