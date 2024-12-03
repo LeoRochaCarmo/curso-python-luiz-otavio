@@ -48,7 +48,55 @@ for root, dirs, files in os.walk(caminho):
         tamanho_arquivo_formatado = formata_tamanho(os.path.getsize(caminho_completo))
         print('  ', the_counter, 'File', file, tamanho_arquivo_formatado)
 
+#%%
+# os + shutil - Copiando arquivos com Python
+# Vamos copiar arquivos de uma pasta para outra.
+# Copiar -> shutil.copy
 
+import os
 
+# Retorna a home do sistema
+home = os.path.expanduser('~')
+print(home)
 
+#%%
+# Criando uma nova pasta e copiando arquivos e subpastas de outra pasta
+import shutil
 
+original_folder = 'C:\\Users\\leona\\Imagens\\exemplo'
+new_folder = 'C:\\Users\\leona\\Imagens\\nova_pasta'
+
+# cria uma nova pasta + checar se já existe
+os.makedirs(new_folder, exist_ok=True)
+
+for root, dirs, files in os.walk(original_folder):
+
+    for dir in dirs:
+        new_dir_path = os.path.join(new_folder, dir)
+        # criando novas 
+        os.makedirs(new_dir_path, exist_ok=True)
+        
+    for file in files:
+        file_path = os.path.join(root, file)
+        # usando .replace para criar o caminho da nova pasta
+        new_file_path = os.path.join(root.replace(original_folder, new_folder), file)
+        if not os.path.exists(new_file_path):
+            shutil.copy(file_path, new_file_path)
+            print('New file copied.')
+        else:
+            print('Path and file already existed.')
+
+#%%
+# Copiar Árvore recursivamente -> shutil.copytree
+# Apagar Árvore recursivamente -> shutil.rmtree
+# Apagar arquivos -> os.unlink
+# Renomear/Mover -> shutil.move ou os.rename
+original_folder = 'C:\\Users\\leona\\Imagens\\exemplo'
+new_folder = 'C:\\Users\\leona\\Imagens\\nova_pasta'
+
+shutil.copytree(original_folder, new_folder, dirs_exist_ok=True)
+
+# renomear a pasta
+shutil.move(new_folder, new_folder + '_renomeado')
+
+# shutil.rmtree(new_folder)
